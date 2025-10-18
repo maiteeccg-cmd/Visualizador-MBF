@@ -34,16 +34,17 @@
         .kpi-card-value {
             font-weight: 800;
         }
-        .cta-button, .year-filter-button {
+        .cta-button, .year-filter-button, .kpi-year-filter-button {
             transition: all 0.3s ease;
         }
-        .cta-button:hover, .year-filter-button:hover {
+        .cta-button:hover, .year-filter-button:hover, .kpi-year-filter-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .year-filter-button.active {
+        .year-filter-button.active, .kpi-year-filter-button.active {
             background-color: #3D5FE3 !important;
             color: white !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .tab-button {
             transition: all 0.2s ease-in-out;
@@ -86,38 +87,41 @@
 
     <header class="text-center py-12 md:py-16 px-4">
         <h1 class="text-4xl md:text-5xl font-extrabold text-[#3D5FE3] tracking-tight">Mi Barrio Financiero: <span class="text-[#F2166B]">Transformando Futuros</span></h1>
-        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">Visualiza el impacto de nuestra iniciativa de educación financiera y descubre cómo puedes ser parte del cambio.</p>
+        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">¿Buscas resultados reales? Con orgullo podemos decir que <strong>más de 71,900 personas</strong> ya han completado y certificado sus conocimientos con nosotros. Nuestro método funciona y estamos aquí para acompañarte hasta el final.</p>
     </header>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8">
 
         <section id="kpis" class="py-12">
-            <h2 class="text-3xl font-bold text-center mb-10 text-[#2C3E50]">Nuestro Impacto Total</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
-                <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 lg:col-span-1 xl:col-span-1">
+            <h2 id="kpi-title" class="text-3xl font-bold text-center mb-4 text-[#2C3E50]">Nuestro Impacto Total</h2>
+            <div id="kpi-year-filter-buttons" class="flex justify-center flex-wrap gap-2 mb-10">
+                <!-- KPI year filter buttons will be inserted here -->
+            </div>
+            <div id="kpi-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
+                <div id="kpi-card-cursos" class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
                     <div class="text-5xl text-[#9B59B6] mb-2">📚</div>
                     <div id="kpi-cursos" class="text-5xl kpi-card-value text-[#2C3E50]">0</div>
-                    <p class="text-gray-500 mt-2 font-semibold">Cursos Activos</p>
+                    <p id="kpi-cursos-label" class="text-gray-500 mt-2 font-semibold">Cursos Activos</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 lg:col-span-1 xl:col-span-1">
+                <div id="kpi-card-inscritos" class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
                     <div class="text-5xl text-[#3498DB] mb-2">💡</div>
                     <div id="kpi-inscritos" class="text-5xl kpi-card-value text-[#2C3E50]">0</div>
-                    <p class="text-gray-500 mt-2 font-semibold">Inscritos (Histórico)</p>
+                    <p id="kpi-inscritos-label" class="text-gray-500 mt-2 font-semibold">Inscritos</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 lg:col-span-1 xl:col-span-1">
+                <div id="kpi-card-certificados" class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
                     <div class="text-5xl text-[#2ECC71] mb-2">🎓</div>
                     <div id="kpi-certificados" class="text-5xl kpi-card-value text-[#2C3E50]">0</div>
-                    <p class="text-gray-500 mt-2 font-semibold">Certificados (Histórico)</p>
+                    <p id="kpi-certificados-label" class="text-gray-500 mt-2 font-semibold">Certificados</p>
                 </div>
-                 <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 sm:col-start-auto lg:col-span-1 xl:col-span-1">
+                 <div id="kpi-card-tasa" class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
                     <div class="text-5xl text-[#E74C3C] mb-2">🎯</div>
                     <div id="kpi-tasa" class="text-5xl kpi-card-value text-[#2C3E50]">0%</div>
-                    <p class="text-gray-500 mt-2 font-semibold">Tasa Certificación (Hist.)</p>
+                    <p id="kpi-tasa-label" class="text-gray-500 mt-2 font-semibold">Tasa Certificación</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 sm:col-start-auto lg:col-span-2 lg:col-start-2 xl:col-span-1 xl:col-start-auto">
+                <div id="kpi-card-charlas" class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
                     <div class="text-5xl text-[#F39C12] mb-2">📢</div>
                     <div id="kpi-charlas" class="text-5xl kpi-card-value text-[#2C3E50]">0</div>
-                    <p class="text-gray-500 mt-2 font-semibold">Charlas Realizadas (2025)</p>
+                    <p id="kpi-charlas-label" class="text-gray-500 mt-2 font-semibold">Charlas Realizadas</p>
                 </div>
             </div>
         </section>
@@ -202,9 +206,13 @@
             </div>
         </section>
 
+        <section class="text-center pt-0 pb-8 px-4">
+             <p class="font-bold text-lg text-[#2C3E50] max-w-2xl mx-auto">Ya seas docente, emprendedor, estudiante o simplemente alguien con ganas de aprender, tenemos un curso diseñado para ti.</p>
+        </section>
+
     </main>
 
-    <footer class="bg-white mt-16">
+    <footer class="bg-white mt-8">
         <div class="container mx-auto py-8 px-8 text-center text-gray-500">
             <p class="font-bold text-lg text-[#2C3E50]">¿Listo para transformar tu futuro financiero?</p>
             <a href="https://mibarriofinanciero.cl" class="mt-4 inline-block bg-[#E67E22] text-white font-bold py-3 px-8 rounded-full cta-button">¡Ver todos los cursos!</a>
@@ -215,12 +223,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            const kpiData = {
-                inscritosHistorico: 136874,
-                certificadosHistorico: 71262,
-                tasaHistorica: 52.06,
-                cursosActivos: 4, 
-                charlas2025: 330 
+            // --- MATRIZ DE DATOS PARA KPIs INTERACTIVOS (CORREGIDA FINAL) ---
+            const kpiDataPorAno = {
+                'Histórico': { inscritos: 137774, certificados: 71962, tasa: 52.23, cursosActivos: 4, charlas: 330 },
+                '2025': { inscritos: 61745, certificados: 35975, tasa: 58.26, cursosActivos: 4, charlas: 330 },
+                '2024': { inscritos: 66707, certificados: 34465, tasa: 51.67, cursosActivos: 4, charlas: null },
+                '2023': { inscritos: 18323, certificados: 1322, tasa: 7.21, cursosActivos: 3, charlas: null },
+                '2022': { inscritos: 787, certificados: 157, tasa: 19.95, cursosActivos: 2, charlas: null },
+                '2021': { inscritos: 117, certificados: 43, tasa: 36.75, cursosActivos: 1, charlas: null }
             };
 
             const gaugeData = [
@@ -232,33 +242,33 @@
                 { curso: 'Curso Ciudadanía', audiencia: 'Público Total', ratio: 68.85, color: '#0056b3' }
             ];
             
-            // --- MATRIZ DE DATOS ACTUALIZADA ---
+            // --- MATRIZ DE DATOS PARA TABLA INTERACTIVA (CORREGIDA FINAL) ---
             const datosHistoricosPorAno = {
                 '2025': [
-                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 307, certificados: 181, tasa: 53.75 },
-                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 9905, certificados: 166, tasa: 1.68 },
-                    { programa: 'Curso Ciudadanía', audiencia: 'Estudiantes (FEN + Inacap + Armada)', inscritos: 43892, certificados: 34567, tasa: 78.75 },
-                    { programa: 'Curso Ciudadanía', audiencia: 'Público General', inscritos: 7035, certificados: 471, tasa: 6.7 },
-                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 606, certificados: 606, tasa: 100 }
+                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 307, certificados: 165 },
+                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 9905, certificados: 166 },
+                    { programa: 'Curso Ciudadanía', audiencia: 'Estudiantes (FEN + Inacap + Armada)', inscritos: 43892, certificados: 34567 },
+                    { programa: 'Curso Ciudadanía', audiencia: 'Público General', inscritos: 7035, certificados: 471 },
+                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 606, certificados: 606 }
                 ],
                 '2024': [
-                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 607, certificados: 417, tasa: 68.7 },
-                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 18059, certificados: 730, tasa: 4.04 },
-                    { programa: 'Curso Ciudadanía', audiencia: 'Estudiantes (FEN + Inacap + Armada)', inscritos: 37800, certificados: 31704, tasa: 83.87 },
-                    { programa: 'Curso Ciudadanía', audiencia: 'Público General', inscritos: 9813, certificados: 1186, tasa: 12.09 },
-                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 428, certificados: 428, tasa: 100 }
+                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 607, certificados: 417 },
+                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 18059, certificados: 730 },
+                    { programa: 'Curso Ciudadanía', audiencia: 'Estudiantes (FEN + Inacap + Armada)', inscritos: 37800, certificados: 31704 },
+                    { programa: 'Curso Ciudadanía', audiencia: 'Público General', inscritos: 9813, certificados: 1186 },
+                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 428, certificados: 428 }
                 ],
                 '2023': [
-                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 379, certificados: 253, tasa: 66.75 },
-                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 17811, certificados: 936, tasa: 5.26 },
-                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 133, certificados: 133, tasa: 100 }
+                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 379, certificados: 253 },
+                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 17811, certificados: 936 },
+                    { programa: 'Nunca es Tarde', audiencia: 'Personas Mayores', inscritos: 133, certificados: 133 }
                 ],
                 '2022': [
-                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 313, certificados: 141, tasa: 45.04 }, // Tasa corregida para 2022
-                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 474, certificados: 16, tasa: 3.38 } // Tasa corregida para 2022
+                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 313, certificados: 141 },
+                    { programa: 'Manos a la Obra', audiencia: 'Emprendedores', inscritos: 474, certificados: 16 }
                 ],
                 '2021': [
-                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 117, certificados: 43, tasa: 36.75 }
+                    { programa: 'SSDD', audiencia: 'Docentes', inscritos: 117, certificados: 43 }
                 ]
             };
 
@@ -274,7 +284,7 @@
                 certificados: {
                     'Personas Mayores': [606, 0, 0, 0],
                     'Público General': [0, 471, 0, 0],
-                    'Estudiantes (FEN + Inacap + Armada)': [0, 65571, 0, 0],
+                    'Estudiantes (FEN + Inacap + Armada)': [0, 34567, 0, 0], // Corregido
                     'Emprendedores': [0, 0, 166, 0],
                     'Docentes': [0, 0, 0, 165]
                 },
@@ -287,11 +297,12 @@
                 }
             };
 
+            // --- GRÁFICO DE BURBUJAS HISTÓRICO CORREGIDO ---
             const historicoBubbleData = {
                 datasets: [
                     { label: 'SSDD', data: [{ x: 1019, y: 1723, r: 15 }], backgroundColor: '#9B59B6' },
                     { label: 'Manos a la Obra', data: [{ x: 1848, y: 36344, r: 35 }], backgroundColor: '#2ECC71' },
-                    { label: 'Curso Ciudadanía', data: [{ x: 67228, y: 97640, r: 50 }], backgroundColor: '#3498DB' },
+                    { label: 'Curso Ciudadanía', data: [{ x: 67928, y: 98540, r: 50 }], backgroundColor: '#3498DB' }, // Corregido
                     { label: 'Nunca es Tarde', data: [{ x: 1167, y: 1167, r: 12 }], backgroundColor: '#F1C40F' }
                 ]
             };
@@ -324,7 +335,7 @@
                     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                     const currentValue = progress * (end - start) + start;
                     if (isPercent) {
-                        obj.innerHTML = `${currentValue.toFixed(1).replace('.',',')}%`;
+                        obj.innerHTML = `${currentValue.toFixed(2).replace('.',',')}%`;
                     } else {
                         obj.innerHTML = `+${Math.floor(currentValue).toLocaleString('es-CL')}`;
                     }
@@ -334,14 +345,63 @@
                 };
                 window.requestAnimationFrame(step);
             };
+            
+            // --- LÓGICA PARA KPIs INTERACTIVOS (CON AJUSTE DE GRID) ---
+            const initInteractiveKpis = () => {
+                const buttonsContainer = document.getElementById('kpi-year-filter-buttons');
+                const years = Object.keys(kpiDataPorAno).sort((a,b) => b.localeCompare(a)); // Histórico primero
+                
+                years.forEach(year => {
+                    const button = document.createElement('button');
+                    button.textContent = year;
+                    button.className = 'kpi-year-filter-button bg-white text-gray-700 font-semibold py-2 px-4 rounded-full border';
+                    button.dataset.year = year;
+                    buttonsContainer.appendChild(button);
+                });
 
-            const initKpis = () => {
-                animateValue(document.getElementById('kpi-inscritos'), 0, kpiData.inscritosHistorico, 2000);
-                animateValue(document.getElementById('kpi-certificados'), 0, kpiData.certificadosHistorico, 2000);
-                animateValue(document.getElementById('kpi-tasa'), 0, kpiData.tasaHistorica, 2000, true);
-                animateValue(document.getElementById('kpi-cursos'), 0, kpiData.cursosActivos, 2000);
-                animateValue(document.getElementById('kpi-charlas'), 0, kpiData.charlas2025, 2000);
+                buttonsContainer.addEventListener('click', e => {
+                    if(e.target.tagName === 'BUTTON') {
+                        const year = e.target.dataset.year;
+                        updateKpis(year);
+                        buttonsContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                    }
+                });
+
+                // Cargar 'Histórico' por defecto
+                buttonsContainer.querySelector('button[data-year="Histórico"]').classList.add('active');
+                updateKpis('Histórico');
             };
+
+            const updateKpis = (year) => {
+                const data = kpiDataPorAno[year];
+                if (!data) return;
+
+                const kpiTitle = document.getElementById('kpi-title');
+                kpiTitle.textContent = `Nuestro Impacto (${year})`;
+
+                animateValue(document.getElementById('kpi-inscritos'), 0, data.inscritos, 1500);
+                animateValue(document.getElementById('kpi-certificados'), 0, data.certificados, 1500);
+                animateValue(document.getElementById('kpi-tasa'), 0, data.tasa, 1500, true);
+                animateValue(document.getElementById('kpi-cursos'), 0, data.cursosActivos, 1500);
+                
+                document.getElementById('kpi-inscritos-label').textContent = `Inscritos (${year})`;
+                document.getElementById('kpi-certificados-label').textContent = `Certificados (${year})`;
+                document.getElementById('kpi-tasa-label').textContent = `Tasa Certificación (${year})`;
+
+                const charlasCard = document.getElementById('kpi-card-charlas');
+                const kpiGridContainer = document.getElementById('kpi-grid-container');
+
+                if (data.charlas !== null) {
+                    animateValue(document.getElementById('kpi-charlas'), 0, data.charlas, 1500);
+                    charlasCard.style.display = 'block';
+                    kpiGridContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8';
+                } else {
+                    charlasCard.style.display = 'none';
+                    kpiGridContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8';
+                }
+            };
+
 
             const createGaugeCharts = () => {
                 const container = document.getElementById('gauge-container');
@@ -386,7 +446,6 @@
                 });
             };
             
-            // --- LÓGICA ACTUALIZADA PARA LA TABLA INTERACTIVA ---
             const initInteractiveTable = () => {
                 const table = document.getElementById('interactive-detail-table');
                 const thead = table.querySelector('thead');
@@ -415,7 +474,6 @@
                     }
                 });
                 
-                // Cargar el año más reciente por defecto
                 buttonsContainer.querySelector('button').classList.add('active');
                 updateTableForYear(years[0]);
             };
@@ -429,7 +487,8 @@
 
                 const yearData = datosHistoricosPorAno[year] || [];
                 yearData.forEach(data => {
-                    const tasaFormatted = data.tasa.toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+                    const tasa = data.inscritos > 0 ? (data.certificados / data.inscritos * 100) : 0;
+                    const tasaFormatted = tasa.toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
                     const row = `
                         <tr class="bg-white border-b">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${data.programa}</th>
@@ -442,8 +501,6 @@
                     tbody.innerHTML += row;
                 });
             };
-            
-            // --- FIN DE LA LÓGICA ACTUALIZADA ---
             
             let alcanceChartInstance;
             const createAlcanceChart = (metric = 'inscritos') => {
@@ -581,10 +638,10 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const targetId = entry.target.id;
-                        if (targetId === 'kpis') initKpis();
+                        if (targetId === 'kpis') initInteractiveKpis(); // Usar la nueva función interactiva
                         if (targetId === 'eficacia-detallada') {
                            createGaugeCharts();
-                           initInteractiveTable(); // Inicializar la nueva tabla
+                           initInteractiveTable(); 
                         }
                         if (targetId === 'analisis-detallado') {
                             createAlcanceChart('inscritos');
